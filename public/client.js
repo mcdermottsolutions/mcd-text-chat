@@ -9,5 +9,5 @@ $('form').submit(function(){
 });
 
 socket.on('sms message', function(smsMsg){
-  $('#messages').append($('<li>mark: ').text('mark (from sms): ' + smsMsg));
+  $('#messages').append($('<li>mark: ').text('Mark: ' + smsMsg));
 });
