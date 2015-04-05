@@ -8,10 +8,7 @@
 	width: 310px;
 	margin: 0 auto;
 	overflow: hidden;
-	border: 0px solid #36383a;
-	border-width: 50px 15px;
 	color: #474c57;
-	border-radius: 20px;
 	font-family: 'Avenir Next', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -143,6 +140,10 @@
 .chat-input:empty::before {
 	content: "Write message for Mark...";
 	color: #267BA8;
+}
+
+.chat-input-wrapper.getUsername .chat-input:empty::before {
+	content: "What's your name?";
 }
 
 .chat-input:focus::before {

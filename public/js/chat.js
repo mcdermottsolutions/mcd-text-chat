@@ -14,6 +14,7 @@ $(document).ready(function(){
 		,isFriendTyping=false
 		,incomingMessages=0
 		,lastMessage=""
+		,username=""
 	;
 
 	function gooOn(){
@@ -33,7 +34,7 @@ $(document).ready(function(){
 	function addMessage(message,self){
 
 		if (self) {
-			socket.emit('webclient message', message);
+			socket.emit('webclient message', message,username);
 		}
 
 		var $messageContainer=$("<li/>")
@@ -321,21 +322,50 @@ $(document).ready(function(){
 		});
 	}
 
+	function getUsername(){
+		var nameInput=$input.text();
+		if(nameInput=="") {
+			return;
+		} else {
+			if (nameInput.lengh < 10) {
+				username = nameInput;
+			} else {
+				username = nameInput.substring(0,11);
+			}
+			username.replace(/[^a-zA-Z0-9.-]/g,'-');
+			$input.text('');
+			$('.chat-input-wrapper').removeClass('getUsername');
+			$('.chat-send .fa')
+				.removeClass('fa-arrow-right')
+				.addClass('fa-paper-plane');
+		}
+	}
+
 	$input.keydown(function(event) {
 		if(event.keyCode==KEY_ENTER){
 			event.preventDefault();
-			sendMessage();
+			if (username != "") {
+				sendMessage();
+			} else {
+				getUsername();
+			}
 		}
 	});
 	$sendButton.click(function(event){
 		event.preventDefault();
-		sendMessage();
-		// $input.focus();
+		if (username != "") {
+			sendMessage();
+		} else {
+			getUsername();
+		}
 	});
 	$sendButton.on("touchstart",function(event){
 		event.preventDefault();
-		sendMessage();
-		// $input.focus();
+		if (username != "") {
+			sendMessage();
+		} else {
+			getUsername();
+		}
 	});
 
 	$input.on("input",function(){
@@ -344,7 +374,8 @@ $(document).ready(function(){
 
 	gooOff();
 	updateChatHeight();
-	
+	$('.chat-input-wrapper').addClass('getUsername');
+
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
 		getReply(smsMsg);
