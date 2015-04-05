@@ -206,25 +206,31 @@ $(document).ready(function(){
 		var typeStartDelay=1000+(lastMessage.length*40)+(Math.random()*1000);
 
 		var message=smsMsg;
+
 		console.log('getReplay message: ' + message);
 		console.log(typeof message);
-		setTimeout(friendIsTyping,typeStartDelay);
+
+		if (typeof message !== "undefined") {
 		
-		var typeDelay = 2000;
+			setTimeout(friendIsTyping,typeStartDelay);
+			
+			var typeDelay = 2000;
 
-		setTimeout(function(){
-			receiveMessage(message);
-		},typeDelay+typeStartDelay);
+			setTimeout(function(){
+				receiveMessage(message);
+			},typeDelay+typeStartDelay);
 
-		setTimeout(function(){
-			incomingMessages--;
-			if(Math.random()<0.1){
-				getReply();
-			}
-			if(incomingMessages<=0){
-				friendStoppedTyping();
-			}
-		},typeDelay+typeStartDelay);
+			setTimeout(function(){
+				incomingMessages--;
+				if(Math.random()<0.1){
+					getReply();
+				}
+				if(incomingMessages<=0){
+					friendStoppedTyping();
+				}
+			},typeDelay+typeStartDelay);
+
+		}
 	}
 	function friendIsTyping(){
 		if(isFriendTyping) return;
