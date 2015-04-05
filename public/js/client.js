@@ -348,47 +348,37 @@ $(document).ready(function(){
 	}
 
 	$input.keydown(function(event) {
-		if (justGotUsername) {
-			justGotUsername = false;
-			$('.chat-input-wrapper').removeClass('justGotUsername');
-		}
+		usernameCheck();
 		if(event.keyCode==KEY_ENTER){
 			event.preventDefault();
-			if (username != "") {
-				emitMessage();
-				//sendMessage();
-			} else {
-				getUsername();
-			}
+			processUserInput(event);
 		}
 	});
 	$sendButton.click(function(event){
 		event.preventDefault();
-		console.log('click!');
-		if (justGotUsername) {
-				justGotUsername = false;
-				$('.chat-input-wrapper').removeClass('justGotUsername');
-			}
-		if (username != "") {
-			emitMessage();
-			// sendMessage();
-		} else {
-			getUsername();
-		}
+		usernameCheck();
+		processUserInput(event);
 	});
 	$sendButton.on("touchstart",function(event){
 		event.preventDefault();
+		usernameCheck();
+		processUserInput(event);
+	});
+
+	function usernameCheck() {
 		if (justGotUsername) {
 			justGotUsername = false;
 			$('.chat-input-wrapper').removeClass('justGotUsername');
 		}
+	}
+
+	function processUserInput(event) {
 		if (username != "") {
 			emitMessage();
-			// sendMessage();
 		} else {
 			getUsername();
 		}
-	});
+	}
 
 	$input.on("input",function(){
 		updateChatHeight();
