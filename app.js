@@ -14,7 +14,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', function(socket){
 	
 	socket.on('webclient message', function(msg,username){
-		console.log('app.js username: ' + username);
 		var messageBody = username + ': ' + msg;
 		twilio.sendMessage({
 			to: myCellNumber, 
@@ -27,7 +26,6 @@ io.on('connection', function(socket){
 	 	.use(bodyParser.urlencoded({extended: true}))
 		.post('/incoming', function(req, res) {
 			var smsMessage = req.body.Body;
-			console.log(smsMessage);
 			io.emit('sms message', smsMessage);
 		});
 
