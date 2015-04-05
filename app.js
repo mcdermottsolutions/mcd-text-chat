@@ -35,7 +35,9 @@ io.on('connection', function(socket){
 	 	.use(bodyParser.urlencoded({extended: true}))
 		.post('/incoming', function(req, res) {
 			var smsMessage = req.body.Body;
+			console.log('smsMessage: ' + smsMessage);
 			if (typeof smsMessage !== "undefined") {
+				console.log('passed undefined test');
 				io.emit('sms message', smsMessage);
 			}
 		});
