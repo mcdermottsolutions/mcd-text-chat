@@ -141,6 +141,7 @@
 	position: absolute;
 	left: 15px;
 	top: 20px;
+	text-align: left;
 }
 
 .chat-input:empty::before {
