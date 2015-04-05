@@ -386,6 +386,7 @@ $(document).ready(function(){
 
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
+		console.log(typeof smsMsg);
 		if (typeof smsMsg !== "null") {
 			getReply(smsMsg);
 		}
