@@ -390,7 +390,7 @@ $(document).ready(function(){
 		var messageType = typeof smsMsg;
 		var isUndefined = messageType == "undefined" ? true : false;
 		if (isUndefined == false) {
-			getReply(msgType + ' ' + isUndefined);
+			getReply(smsMsg + ' ' + isUndefined);
 		}
 	});
 
