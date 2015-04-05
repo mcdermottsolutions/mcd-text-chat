@@ -387,9 +387,9 @@ $(document).ready(function(){
 
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
-		var msgType = typeof smsMsg;
-		var isUndefined = (typeof smsMsg == "undefined" ) ? true : false;
-		getReply(msgType + ' ' + isUndefined);
+		if (typeof smsMsg != "undefined") {
+			getReply(msgType + ' ' + isUndefined);
+		}
 	});
 
 	// process incoming user message from server
