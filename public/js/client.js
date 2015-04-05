@@ -67,7 +67,6 @@ $(document).ready(function(){
 	function emitMessage(){
 		var message=$input.text();
 		if(message=="") return;
-		console.log('we want to send this message');
 		socket.emit('user msg - from client', message,username);
 	}
 	function sendMessage(message){
@@ -395,7 +394,6 @@ $(document).ready(function(){
 
 	// process incoming user message from server
 	socket.on('user msg - from server', function(msg,user){
-		console.log('incoming user message from server: ' + user + ': ' + msg)
 		addMessage(msg,true,user)
 	});
 

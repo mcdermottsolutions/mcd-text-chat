@@ -17,8 +17,6 @@ io.on('connection', function(socket){
 	// process client message
 	socket.on('user msg - from client', function(msg,username){
 
-		console.log('server says "incoming message from client": ' + username + ': ' + msg);
-
 		// send sms
 		var messageBody = username + ': ' + msg;
 		twilio.sendMessage({
