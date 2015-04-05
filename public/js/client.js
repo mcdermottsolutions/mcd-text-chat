@@ -387,8 +387,9 @@ $(document).ready(function(){
 
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
-		var smsMsgLength = smsMsg.length;
-		// getReply(smsMsgLength + ' ' + smsMsg);
+		if (smsMsg.length) {
+			getReply(smsMsg.length + ' ' + smsMsg);
+		}
 	});
 
 	// process incoming user message from server
