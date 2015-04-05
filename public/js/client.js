@@ -201,7 +201,9 @@ $(document).ready(function(){
 	}
 	
 	function getReply(smsMsg){
-		console.log('getReply ' + smsMsg)
+		var smsString = smsMsg.toString();
+		var testMsg = '|' + smsString + '|';
+		console.log('getReply ' + testMsg)
 		if(incomingMessages>2) return;
 		incomingMessages++;
 		var typeStartDelay=1000+(lastMessage.length*40)+(Math.random()*1000);
@@ -387,9 +389,7 @@ $(document).ready(function(){
 
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
-		var smsString = smsMsg.toString();
-		var testMsg = '|' + smsString + '|';
-		getReply(testMsg);
+		getReply(smsMsg);
 	});
 
 	// process incoming user message from server
