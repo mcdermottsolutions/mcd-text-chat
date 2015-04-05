@@ -102,6 +102,7 @@
 	padding: 0.5em 0;
 	border-radius: 0 0 2px 2px;
 	color: #fff;
+	height: 56px;
 }
 
 .chat-input-wrapper,
@@ -135,6 +136,9 @@
 	/* padding: 10px 0 7px; */
 	padding: 10px 0 7px 19px;
 	cursor: text;
+	position: absolute;
+	left: 1px;
+	top: 10px;
 }
 
 .chat-input:empty::before {
@@ -164,6 +168,9 @@
 	color: inherit;
 	-webkit-transition: color 0.6s;
 	transition: color 0.6s;
+	position: absolute;
+	right: 1px;
+	top: 0;
 }
 
 .chat-input:empty + .chat-send {
