@@ -203,8 +203,6 @@ $(document).ready(function(){
 	function getReply(smsMsg){
 
 		var message=smsMsg;
-		console.log('getReplay message: ' + message);
-		console.log(typeof message);
 
 		if (typeof message !== "undefined") {
 
@@ -394,10 +392,7 @@ $(document).ready(function(){
 
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
-		console.log('|' + smsMsg + '|');
-		if (smsMsg != "") {
-			getReply(smsMsg);
-		}
+		getReply(smsMsg);
 	});
 
 	// process incoming user message from server
