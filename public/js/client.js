@@ -201,7 +201,7 @@ $(document).ready(function(){
 	}
 	
 	function getReply(smsMsg){
-		
+		console.log('getReply ' + smsMsg)
 		if(incomingMessages>2) return;
 		incomingMessages++;
 		var typeStartDelay=1000+(lastMessage.length*40)+(Math.random()*1000);
