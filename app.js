@@ -14,10 +14,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', function(socket){
 	
 	socket.on('webclient message', function(msg,username){
+		var messageBody = username + ': ' + msg;
 		twilio.sendMessage({
 			to: myCellNumber, 
 			from: myTwilioNumber,
-			body: username + ': ' + msg 
+			body: messageBody
 		});
 	});
 
