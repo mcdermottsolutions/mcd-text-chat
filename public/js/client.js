@@ -68,11 +68,9 @@ $(document).ready(function(){
 		var message=$input.text();
 		if(message=="") return;
 		socket.emit('user msg - from client', message,username);
+		$input.text('');
 	}
 	function sendMessage(message){
-		
-		// var message=$input.text();
-		// if(message=="") return;
 
 		lastMessage=message;
 
