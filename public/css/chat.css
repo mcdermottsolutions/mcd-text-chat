@@ -134,11 +134,12 @@
 	flex: 1;
 	font-size: 14px;
 	/* padding: 10px 0 7px; */
-	padding: 10px 0 7px 19px;
+	/* padding: 10px 0 7px 19px; */
+	padding: 0;
 	cursor: text;
 	position: absolute;
-	left: 1px;
-	top: 10px;
+	left: 15px;
+	top: 20px;
 }
 
 .chat-input:empty::before {
