@@ -388,9 +388,8 @@ $(document).ready(function(){
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
 		var smsString = smsMsg.toString();
-		if (smsString == "") {
-			getReply(smsMsg);
-		}
+		var testMsg = '|' + smsString + '|';
+		getReply(testMsg);
 	});
 
 	// process incoming user message from server
