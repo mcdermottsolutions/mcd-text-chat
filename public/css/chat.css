@@ -168,9 +168,8 @@
 	color: inherit;
 	-webkit-transition: color 0.6s;
 	transition: color 0.6s;
-	position: absolute;
-	right: 1px;
-	top: 0;
+	position: absolute;20px	right: 1px;
+	top: 20px;
 }
 
 .chat-input:empty + .chat-send {
