@@ -387,11 +387,8 @@ $(document).ready(function(){
 
 	// process incoming text
 	socket.on('sms message', function(smsMsg){
-		var messageType = typeof smsMsg;
-		var isUndefined = messageType == "undefined" ? true : false;
-		if (isUndefined == false) {
-			getReply(smsMsg + ' ' + isUndefined);
-		}
+		smsMsg = smsMsg.length;
+		getReply(smsMsg);
 	});
 
 	// process incoming user message from server
