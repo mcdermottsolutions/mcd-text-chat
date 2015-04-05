@@ -15,6 +15,7 @@ $(document).ready(function(){
 		,incomingMessages=0
 		,lastMessage=""
 		,username=""
+		,justGotUsername=false
 	;
 
 	function gooOn(){
@@ -335,6 +336,8 @@ $(document).ready(function(){
 			username.replace(/[^a-zA-Z0-9.-]/g,'-');
 			$input.text('');
 			$('.chat-input-wrapper').removeClass('getUsername');
+			$('.chat-input-wrapper').addClass('justGotUsername');
+			justGotUsername = true;
 			$('.chat-send .fa')
 				.removeClass('fa-arrow-right')
 				.addClass('fa-paper-plane');
@@ -342,6 +345,10 @@ $(document).ready(function(){
 	}
 
 	$input.keydown(function(event) {
+		if (justGotUsername) {
+			justGotUsername = false;
+			$('.chat-input-wrapper').removeClass('justGotUsername');
+		}
 		if(event.keyCode==KEY_ENTER){
 			event.preventDefault();
 			if (username != "") {
@@ -353,6 +360,10 @@ $(document).ready(function(){
 	});
 	$sendButton.click(function(event){
 		event.preventDefault();
+		if (justGotUsername) {
+				justGotUsername = false;
+				$('.chat-input-wrapper').removeClass('justGotUsername');
+			}
 		if (username != "") {
 			sendMessage();
 		} else {
@@ -361,6 +372,10 @@ $(document).ready(function(){
 	});
 	$sendButton.on("touchstart",function(event){
 		event.preventDefault();
+		if (justGotUsername) {
+			justGotUsername = false;
+			$('.chat-input-wrapper').removeClass('justGotUsername');
+		}
 		if (username != "") {
 			sendMessage();
 		} else {

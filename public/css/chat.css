@@ -150,6 +150,11 @@
 	content: "";
 }
 
+.chat-input-wrapper.justGotUsername .chat-input:focus::before {
+	content: "Write message for Mark...";
+	color: #267BA8;
+}
+
 .chat-send {
 	background: transparent;
 	border: none;
