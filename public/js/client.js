@@ -201,9 +201,12 @@ $(document).ready(function(){
 	}
 	
 	function getReply(smsMsg){
-		var smsString = smsMsg.toString();
-		var testMsg = '|' + smsString + '|';
-		console.log('getReply ' + testMsg)
+		if (typeof smsMsg !== "undefined") {
+			console.log(smsMsg);
+		}
+		// var smsString = smsMsg.toString();
+		// var testMsg = '|' + smsString + '|';
+		// console.log('getReply ' + testMsg)
 		if(incomingMessages>2) return;
 		incomingMessages++;
 		var typeStartDelay=1000+(lastMessage.length*40)+(Math.random()*1000);
