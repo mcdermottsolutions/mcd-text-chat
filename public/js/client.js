@@ -355,7 +355,8 @@ $(document).ready(function(){
 		if(event.keyCode==KEY_ENTER){
 			event.preventDefault();
 			if (username != "") {
-				sendMessage();
+				emitMessage();
+				//sendMessage();
 			} else {
 				getUsername();
 			}
@@ -382,7 +383,8 @@ $(document).ready(function(){
 			$('.chat-input-wrapper').removeClass('justGotUsername');
 		}
 		if (username != "") {
-			sendMessage();
+			emitMessage();
+			// sendMessage();
 		} else {
 			getUsername();
 		}
