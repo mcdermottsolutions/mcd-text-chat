@@ -207,6 +207,7 @@ $(document).ready(function(){
 		setTimeout(friendIsTyping,typeStartDelay);
 
 		var message=smsMsg;
+		console.log('getReplay message: ' + message);
 		
 		var typeDelay = 2000;
 
