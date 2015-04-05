@@ -34,6 +34,7 @@ $(document).ready(function(){
 	function addMessage(message,self){
 
 		if (self) {
+			console.log('addMessage() username: ' + username);
 			socket.emit('webclient message', message,username);
 		}
 
@@ -338,6 +339,7 @@ $(document).ready(function(){
 			$('.chat-send .fa')
 				.removeClass('fa-arrow-right')
 				.addClass('fa-paper-plane');
+			console.log('getUsername() username: ' + username);
 		}
 	}
 
