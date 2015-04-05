@@ -212,7 +212,7 @@ $(document).ready(function(){
 		var typeDelay = 2000;
 
 		setTimeout(function(){
-			receiveMessage(message);
+			// receiveMessage(message);
 		},typeDelay+typeStartDelay);
 
 		setTimeout(function(){
