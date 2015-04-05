@@ -13,12 +13,11 @@ socketIds = [];
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', function(socket){
-	
-	var sessionId = Math.floor(Math.random() * 10000000000);
-	console.log('new session: ' + sessionId);
 
 	// process client message
 	socket.on('user msg - from client', function(msg,username){
+
+		console.log('server says "incoming message from client": ' + username + ': ' + msg);
 
 		// send sms
 		var messageBody = username + ': ' + msg;

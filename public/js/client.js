@@ -67,9 +67,10 @@ $(document).ready(function(){
 	function emitMessage(){
 		var message=$input.text();
 		if(message=="") return;
+		console.log('we want to send this message');
 		socket.emit('user msg - from client', message,username);
 	}
-	function sendMessage(){
+	function sendMessage(message){
 		
 		// var message=$input.text();
 		// if(message=="") return;
@@ -362,6 +363,7 @@ $(document).ready(function(){
 	});
 	$sendButton.click(function(event){
 		event.preventDefault();
+		console.log('click!');
 		if (justGotUsername) {
 				justGotUsername = false;
 				$('.chat-input-wrapper').removeClass('justGotUsername');
@@ -401,6 +403,7 @@ $(document).ready(function(){
 
 	// process incoming user message from server
 	socket.on('user msg - from server', function(msg,user){
+		console.log('incoming user message from server: ' + user + ': ' + msg)
 		addMessage(msg,true,user)
 	});
 
