@@ -138,7 +138,7 @@
 }
 
 .chat-input:empty::before {
-	content: "Write message for Mark...";
+	content: "Write message...";
 	color: #267BA8;
 }
 
@@ -151,7 +151,7 @@
 }
 
 .chat-input-wrapper.justGotUsername .chat-input:focus::before {
-	content: "Write message for Mark...";
+	content: "Write message...";
 	color: #267BA8;
 }
 

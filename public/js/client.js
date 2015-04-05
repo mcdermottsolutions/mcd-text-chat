@@ -32,11 +32,9 @@ $(document).ready(function(){
 		});
 	}
 
-	function addMessage(message,self){
+	function addMessage(message,self,user){
 
-		if (self) {
-			socket.emit('webclient message', message,username);
-		}
+		message = self ? user + ': ' + message : 'Mark: ' + message; 
 
 		var $messageContainer=$("<li/>")
 			.addClass('chat-message '+(self?'chat-message-self':'chat-message-friend'))
@@ -66,12 +64,16 @@ $(document).ready(function(){
 			$bubble:$messageBubble
 		};
 	}
+	function emitMessage(){
+		var message=$input.text();
+		if(message=="") return;
+		socket.emit('user msg - from client', message,username);
+	}
 	function sendMessage(){
 		
-		var message=$input.text();
-		
-		if(message=="") return;
-		
+		// var message=$input.text();
+		// if(message=="") return;
+
 		lastMessage=message;
 
 		var messageElements=addMessage(message,true)
@@ -365,7 +367,8 @@ $(document).ready(function(){
 				$('.chat-input-wrapper').removeClass('justGotUsername');
 			}
 		if (username != "") {
-			sendMessage();
+			emitMessage();
+			// sendMessage();
 		} else {
 			getUsername();
 		}
@@ -396,5 +399,9 @@ $(document).ready(function(){
 		getReply(smsMsg);
 	});
 
+	// process incoming user message from server
+	socket.on('user msg - from server', function(msg,user){
+		addMessage(msg,true,user)
+	});
 
 })

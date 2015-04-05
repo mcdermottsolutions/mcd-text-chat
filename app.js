@@ -17,15 +17,23 @@ io.on('connection', function(socket){
 	var sessionId = Math.floor(Math.random() * 10000000000);
 	console.log('new session: ' + sessionId);
 
-	socket.on('webclient message', function(msg,username){
+	// process client message
+	socket.on('user msg - from client', function(msg,username){
+
+		// send sms
 		var messageBody = username + ': ' + msg;
 		twilio.sendMessage({
 			to: myCellNumber, 
 			from: myTwilioNumber,
 			body: messageBody
 		});
+
+		// send to all webclients
+		io.emit('user msg - from server',msg,username);
+
 	});
 
+	// process incoming text
 	app
 	 	.use(bodyParser.urlencoded({extended: true}))
 		.post('/incoming', function(req, res) {
