@@ -204,15 +204,16 @@ $(document).ready(function(){
 		if(incomingMessages>2) return;
 		incomingMessages++;
 		var typeStartDelay=1000+(lastMessage.length*40)+(Math.random()*1000);
-		setTimeout(friendIsTyping,typeStartDelay);
 
 		var message=smsMsg;
 		console.log('getReplay message: ' + message);
+		console.log(typeof message);
+		setTimeout(friendIsTyping,typeStartDelay);
 		
 		var typeDelay = 2000;
 
 		setTimeout(function(){
-			// receiveMessage(message);
+			receiveMessage(message);
 		},typeDelay+typeStartDelay);
 
 		setTimeout(function(){
