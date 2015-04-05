@@ -389,7 +389,7 @@ $(document).ready(function(){
 	socket.on('sms message', function(smsMsg){
 		var msgType = typeof smsMsg;
 		var isUndefined = (smsMsg === "undefined");
-		getReply(smsMsgType + ' ' + isUndefined);
+		getReply(msgType + ' ' + isUndefined);
 	});
 
 	// process incoming user message from server
