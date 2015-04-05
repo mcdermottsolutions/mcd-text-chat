@@ -201,17 +201,17 @@ $(document).ready(function(){
 	}
 	
 	function getReply(smsMsg){
-		if(incomingMessages>2) return;
-		incomingMessages++;
-		var typeStartDelay=1000+(lastMessage.length*40)+(Math.random()*1000);
 
 		var message=smsMsg;
-
 		console.log('getReplay message: ' + message);
 		console.log(typeof message);
 
 		if (typeof message !== "undefined") {
-		
+
+			if(incomingMessages>2) return;
+			incomingMessages++;
+			var typeStartDelay=1000+(lastMessage.length*40)+(Math.random()*1000);
+
 			setTimeout(friendIsTyping,typeStartDelay);
 			
 			var typeDelay = 2000;
